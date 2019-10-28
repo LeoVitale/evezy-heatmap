@@ -29,7 +29,7 @@ export const chunk = (array, size) => {
   if (firstDate.getDay() !== 0) {
     const temp = [];
     for (let i = 0; i < firstDate.getDay(); i++) {
-      temp.push('0000-00-00');
+      temp.push('empty');
     }
     chunked_arr.push(temp);
   }

@@ -18,6 +18,7 @@ data.forEach(transaction => {
 
 const reducedIterableDates = {};
 const reducedIterableDates2 = {};
+
 iterableDates.forEach((item, key) => {
   reducedIterableDates2[key] = item.reduce((acc, crr) => {
     if (crr.transactionType === 'failed') {
@@ -55,11 +56,11 @@ const scale = () => {
   let maxValue = 0;
   chunkedDates.forEach(listOfDates => {
     listOfDates.forEach(date => {
-      if (reducedIterableDates[date] && reducedIterableDates[date] < minValue) {
-        minValue = reducedIterableDates[date];
+      if (reducedIterableDates2[date] && reducedIterableDates2[date] < minValue) {
+        minValue = reducedIterableDates2[date];
       }
-      if (reducedIterableDates[date] && reducedIterableDates[date] > maxValue) {
-        maxValue = reducedIterableDates[date];
+      if (reducedIterableDates2[date] && reducedIterableDates2[date] > maxValue) {
+        maxValue = reducedIterableDates2[date];
       }
     });
   });
@@ -79,12 +80,16 @@ function getRange(upper, lower, steps) {
   ];
 }
 
+const { minValue, maxValue } = scale();
+
 console.log('====================================');
 console.log(chunkedDates);
 console.log(iterableDates);
 console.log(reducedIterableDates);
 console.log(reducedIterableDates2);
-console.log(scale());
+console.log(minValue, maxValue);
+console.log(getRange(-17099.579999999998, -1249.97, 3));
+console.log(-1249 / -17099);
 console.log('====================================');
 
 const App = props => {
