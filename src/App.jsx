@@ -1,4 +1,5 @@
 import React from 'react';
+import HeatMap from 'components/HeatMap';
 import { chunk, setDateRange } from './helpers/date';
 import { data } from './mock/data.json';
 
@@ -86,8 +87,14 @@ console.log(reducedIterableDates2);
 console.log(scale());
 console.log('====================================');
 
-const App = () => {
-  return <div>ssss</div>;
+const App = props => {
+  return (
+    <div>
+      <HeatMap />
+    </div>
+  );
 };
+
+App.propTypes = {};
 
 export default App;
