@@ -21,3 +21,25 @@ export const setDateRange = (startDate, endDate) => {
 
   return dates;
 };
+
+export const chunk = (array, size) => {
+  const chunked_arr = [];
+  const firstDate = new Date(array[0]);
+  if (firstDate.getDay() !== 0) {
+    const temp = [];
+    for (let i = 0; i < firstDate.getDay(); i++) {
+      temp.push('0000-00-00');
+    }
+    chunked_arr.push(temp);
+  }
+  for (let i = 0; i < array.length; i++) {
+    const last = chunked_arr[chunked_arr.length - 1];
+
+    if (!last || last.length === size) {
+      chunked_arr.push([array[i]]);
+    } else {
+      last.push(array[i]);
+    }
+  }
+  return chunked_arr;
+};
