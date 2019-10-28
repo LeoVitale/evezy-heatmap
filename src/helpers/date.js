@@ -8,6 +8,7 @@ export const getFormatedDate = dt => {
   if (month < 10) {
     month = `0${month}`;
   }
+
   return `${dt.getFullYear()}-${month}-${day}`;
 };
 
