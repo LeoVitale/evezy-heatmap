@@ -1,19 +1,7 @@
-export const generateScale = (minValue, maxValue, value) => {
-  let scale = 0;
-  let type = '';
-
-  if (value < 0) {
-    scale = value / minValue;
-    type = 'failure';
-  }
-
-  if (value > 0) {
-    scale = value / maxValue;
-    type = 'success';
-  }
-
-  return { type, scale };
-};
+export const getScale = (minValue, maxValue, value) => ({
+  scale: value < 0 ? value / minValue : value / maxValue,
+  type: value < 0 ? 'failure' : 'success',
+});
 
 export const createTransactionDates = data => {
   const iterableDates = new Map();
@@ -52,7 +40,7 @@ export const createTransactionDates = data => {
   iterableDates.forEach((item, key) => {
     objDates[key] = {
       ...objDates[key],
-      ...generateScale(minValue, maxValue, objDates[key].outcome),
+      ...getScale(minValue, maxValue, objDates[key].outcome),
     };
   });
 
