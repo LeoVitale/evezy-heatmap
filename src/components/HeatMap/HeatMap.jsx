@@ -14,7 +14,9 @@ const HeatMap = ({ columns = [], data, xLabels = [], yLabels = [] }) => {
     <Container>
       <LabelYContainer>
         {yLabels.map((label, index) => (
-          <LabelY key={index}>{label}</LabelY>
+          <LabelY key={index}>
+            <span>{label}</span>
+          </LabelY>
         ))}
       </LabelYContainer>
       <ColumnContainer>

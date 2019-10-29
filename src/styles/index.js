@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -10,4 +10,13 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
   }
+`;
+
+export const Container = styled.div`
+  padding: 30px;
+`;
+
+export const Title = styled.p`
+  font-size: 0.8rem;
+  margin-bottom: 10px;
 `;
