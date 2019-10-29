@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div.attrs(props => ({
+  style: {
+    backgroundColor: props.item === 'empty' ? '#fff' : '#ccc',
+  },
+}))`
   display: block;
   position: relative;
-  background-color: ${props => (props.item === 'empty' ? '#fff' : '#ccc')};
   width: 14px;
   height: 14px;
   margin: 3px 1.5px;
