@@ -20,7 +20,19 @@ export const LabelYContainer = styled.div`
 `;
 
 export const LabelY = styled.div`
+  display: flex;
   width: 14px;
   height: 14px;
+  margin: 3px 1.5px;
+  color: #666;
+  align-items: center;
+  align-content: center;
+  text-align: right;
+`;
+
+export const LabelX = styled.div`
+  height: 14px;
+  width: 14px;
   margin: 1.5px;
+  color: #666;
 `;
