@@ -14,6 +14,7 @@ export const GlobalStyles = createGlobalStyle`
 
 export const Container = styled.div`
   padding: 30px;
+  display: inline-block;
 `;
 
 export const Title = styled.p`

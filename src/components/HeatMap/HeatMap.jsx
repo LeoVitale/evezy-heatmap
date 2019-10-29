@@ -9,7 +9,7 @@ import {
   LabelY,
 } from './styles';
 
-const HeatMap = ({ columns = [], data, xLabels = [], yLabels = [] }) => {
+const HeatMap = ({ columns = [], data, xLabels = [], yLabels = [], renderItem }) => {
   return (
     <Container>
       <LabelYContainer>
@@ -21,7 +21,7 @@ const HeatMap = ({ columns = [], data, xLabels = [], yLabels = [] }) => {
       </LabelYContainer>
       <ColumnContainer>
         {columns.map((column, index) => (
-          <Column key={index} items={column} data={data} />
+          <Column key={index} items={column} data={data} renderItem={renderItem} />
         ))}
       </ColumnContainer>
       <LabelXContainer>
