@@ -2,21 +2,13 @@ import React from 'react';
 import Column from 'components/Column';
 import { Container, ColumnContainer } from './styles';
 
-const HeatMap = () => {
+const HeatMap = ({ columns = [] }) => {
   return (
     <Container>
       <ColumnContainer>
-        <Column />
-        <Column />
-        <Column />
-        <Column />
-        <Column />
-        <Column />
-        <Column />
-        <Column />
-        <Column />
-        <Column />
-        <Column />
+        {columns.map((column, index) => (
+          <Column key={index} items={column} />
+        ))}
       </ColumnContainer>
     </Container>
   );
