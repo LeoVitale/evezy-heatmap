@@ -4,7 +4,8 @@ import HeatMap from 'components/HeatMap';
 import { setDateRange, chunkCalendar } from 'utils/date';
 import { Container } from './styles';
 
-const HeatMapCalendar = ({ startDate, endDate, data, renderItem }) => {
+const HeatMapCalendar = ({ startDate, endDate, data, renderItem, legend }) => {
+  const LegendComponent = legend;
   const weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const months = [
     'Jan',
@@ -37,7 +38,14 @@ const HeatMapCalendar = ({ startDate, endDate, data, renderItem }) => {
   const positionedMonths = setMonthLabelsPositions(columns, 1);
   return (
     <Container>
-      <HeatMap xLabels={positionedMonths} yLabels={weeks} columns={columns} data={data} />
+      <HeatMap
+        xLabels={positionedMonths}
+        yLabels={weeks}
+        columns={columns}
+        data={data}
+        renderItem={renderItem}
+      />
+      {legend && <LegendComponent />}
     </Container>
   );
 };

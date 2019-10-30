@@ -3,14 +3,8 @@ export const getScale = (minValue, maxValue, value) => ({
   type: value < 0 ? 'failure' : 'success',
 });
 
-export const getScalePercentage = (minValue, maxValue, value) => ({
-  scale: value < 0 ? (value / minValue) * 100 : (value / maxValue) * 100,
-  type: value < 0 ? 'failure' : 'success',
-});
-
-export const createTransactionDates = transactions => {
+export const createTransactionDates = (transactions, isPercent) => {
   const iterableDates = new Map();
-  const objDates = {};
 
   let minValue = 0;
   let maxValue = 0;
@@ -18,14 +12,14 @@ export const createTransactionDates = transactions => {
   transactions.forEach(transaction => {
     const key = transaction.date;
     if (!iterableDates.has(key)) {
-      iterableDates.set(key, [transaction]);
+      iterableDates.set(key, { transactions: [transaction] });
     } else {
-      iterableDates.get(key).push(transaction);
+      iterableDates.get(key).transactions.push(transaction);
     }
   });
 
   iterableDates.forEach((item, key) => {
-    const outcome = item.reduce((acc, crr) => {
+    const outcome = item.transactions.reduce((acc, crr) => {
       if (crr.transactionType === 'failed') {
         return acc - crr.amount;
       }
@@ -39,17 +33,14 @@ export const createTransactionDates = transactions => {
       maxValue = outcome;
     }
 
-    objDates[key] = { outcome };
+    const { scale, type } = getScale(minValue, maxValue, outcome);
+
+    const perc = isPercent ? 100 : 1;
+
+    iterableDates.get(key).outcome = outcome;
+    iterableDates.get(key).scale = scale * perc;
+    iterableDates.get(key).type = type;
   });
 
-  iterableDates.forEach((item, key) => {
-    objDates[key] = {
-      ...objDates[key],
-      ...getScale(minValue, maxValue, objDates[key].outcome),
-    };
-  });
-
-  console.log(objDates);
-
-  return objDates;
+  return iterableDates;
 };

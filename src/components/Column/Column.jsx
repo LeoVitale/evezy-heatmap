@@ -11,7 +11,7 @@ const Column = ({ items = [], data, renderItem }) => {
         const props = {
           key: `${item}-${index}`,
           item,
-          ...data[item],
+          ...data.get(item),
         };
 
         return renderItem ? <RenderItem {...props} /> : <HeatItem {...props} />;

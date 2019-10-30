@@ -21,3 +21,15 @@ export const Title = styled.p`
   font-size: 0.8rem;
   margin-bottom: 10px;
 `;
+
+export const ColorScaleContainer = styled.div`
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-top: 10px;
+`;
+
+export const ScaleLabel = styled.p`
+  font-size: 0.8rem;
+  margin: 0 5px;
+`;
