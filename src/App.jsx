@@ -45,7 +45,7 @@ const App = () => {
       </HeatMapContainer>
 
       <HeatMapContainer>
-        <Title>Financial Transaction Heatmap</Title>
+        <Title>Financial Transaction Heatmap (using a better color scale)</Title>
         <HeatMapCalendar
           startDate="2019-01-01"
           endDate="2019-12-31"
