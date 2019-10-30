@@ -2,7 +2,14 @@ import React from 'react';
 import HeatMapCalendar from 'components/HeatMapCalendar';
 import HeatItemPercentage from 'components/HeatItemPercentage';
 import { createTransactionDates } from 'utils/transactions';
-import { GlobalStyles, Container, Title, ColorScaleContainer, ScaleLabel } from 'styles';
+import {
+  GlobalStyles,
+  Container,
+  Title,
+  ColorScaleContainer,
+  ScaleLabel,
+  HeatMapContainer,
+} from 'styles';
 import { dates } from 'mock/data.json';
 
 const LegendComponent = () => (
@@ -27,22 +34,26 @@ const App = () => {
   return (
     <Container>
       <GlobalStyles />
-      <Title>Financial Transaction Heatmap</Title>
-      <HeatMapCalendar
-        startDate="2019-01-01"
-        endDate="2019-12-31"
-        data={createTransactionDates(dates, false)}
-        legend={null}
-      />
+      <HeatMapContainer>
+        <Title>Financial Transaction Heatmap</Title>
+        <HeatMapCalendar
+          startDate="2019-01-01"
+          endDate="2019-12-31"
+          data={createTransactionDates(dates, false)}
+          legend={null}
+        />
+      </HeatMapContainer>
 
-      <Title>Financial Transaction Heatmap</Title>
-      <HeatMapCalendar
-        startDate="2019-01-01"
-        endDate="2019-12-31"
-        data={createTransactionDates(dates, true)}
-        renderItem={HeatItemPercentage}
-        legend={LegendComponent}
-      />
+      <HeatMapContainer>
+        <Title>Financial Transaction Heatmap</Title>
+        <HeatMapCalendar
+          startDate="2019-01-01"
+          endDate="2019-12-31"
+          data={createTransactionDates(dates, true)}
+          renderItem={HeatItemPercentage}
+          legend={LegendComponent}
+        />
+      </HeatMapContainer>
     </Container>
   );
 };

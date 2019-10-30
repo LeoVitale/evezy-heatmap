@@ -33,3 +33,7 @@ export const ScaleLabel = styled.p`
   font-size: 0.8rem;
   margin: 0 5px;
 `;
+
+export const HeatMapContainer = styled.div`
+  margin-bottom: 30px;
+`;
